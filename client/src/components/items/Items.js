@@ -3,6 +3,8 @@ import ItemList from "./itemList/ItemList";
 
 import { getItems } from "../../api/items";
 import { getPackedItems } from "../../api/packedItems";
+//import { addToPackedItems } from "../../api/items";
+//import { removeFromPackedItems } from "../../api/items";
 
 import { useState, useEffect } from "react";
 
@@ -41,3 +43,6 @@ function Items() {
 }
 
 export default Items;
+
+
+

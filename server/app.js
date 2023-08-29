@@ -35,9 +35,16 @@ app.patch("/trip", (req, res) => {
 // Items
 
 app.get("/items", (req, res) => {
+  const trip = get_trip(); // Get the user's trip data
   const items = get_items();
+
+  // Filter items based on weather conditions
+  const filteredItems = items.filter(item =>
+    item.appropriateWeather.includes(trip.weatherConditions)
+  );
+
   res.status(200);
-  res.json(items);
+  res.json(filteredItems);
 });
 
 app.get("/items/:id", (req, res) => {
@@ -59,6 +66,46 @@ app.get("/packed-items", (req, res) => {
   const items = get_packed_items();
   res.status(200);
   res.json(items);
+});
+
+app.post("/add-packed-item/:itemId", (req, res) => {
+  const itemId = req.params.itemId;
+  const item = get_item_by_id(itemId);
+
+  if (!item) {
+    res.status(404);
+    res.json({ error: "Item not found" });
+    return;
+  }
+
+  const packedItems = get_packed_items();
+  packedItems.push(item);
+
+  res.status(201);
+  res.json({ message: "Item added to packedItems" });
+});
+
+app.delete("/remove-packed-item/:itemId", (req, res) => {
+  const itemId = req.params.itemId;
+  const item = get_item_by_id(itemId);
+
+  if (!item) {
+    res.status(404);
+    res.json({ error: "Item not found" });
+    return;
+  }
+
+  const packedItems = get_packed_items();
+  const index = packedItems.findIndex((packedItem) => packedItem.id === item.id);
+
+  if (index !== -1) {
+    packedItems.splice(index, 1);
+    res.status(200);
+    res.json({ message: "Item removed from packedItems" });
+  } else {
+    res.status(404);
+    res.json({ error: "Item not found in packedItems" });
+  }
 });
 
 app.listen(PORT, (error) => {
