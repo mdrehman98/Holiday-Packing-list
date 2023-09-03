@@ -1,6 +1,6 @@
 import "./ItemList.css";
-import { addToPackedItems } from "/Users/ataur/Documents/technical-test-mypack-main/client/src/api/items.js";
-import { removeFromPackedItems } from "/Users/ataur/Documents/technical-test-mypack-main/client/src/api/items.js";
+
+
 
 import React, { useState } from "react";
 import {
@@ -25,19 +25,19 @@ function ItemList(props) {
   return (
     <>
       <div className="item-list-filters">
-        <button onClick={() => setActiveFilter("all")}>
+      <button className={activeFilter === "all" ? "active" : ""} onClick={() => setActiveFilter("all")} >
           <MdOutlineList />
           All
         </button>
-        <button onClick={() => setActiveFilter("essentials")}>
+        <button className={activeFilter === "essentials" ? "active" : ""} onClick={() => setActiveFilter("essentials")}>
           <MdStars />
           Essentials
         </button>
-        <button onClick={() => setActiveFilter("sports")}>
+        <button className={activeFilter === "sports" ? "active" : ""} onClick={() => setActiveFilter("sports")}>
           <MdOutlineSportsVolleyball />
           Sports
         </button>
-        <button onClick={() => setActiveFilter("hiking")}>
+        <button className={activeFilter === "hiking" ? "active" : ""} onClick={() => setActiveFilter("hiking")}>
           <MdOutlineHiking /> Hiking
         </button>
       </div>
@@ -45,8 +45,8 @@ function ItemList(props) {
         {filteredItems().map((item) => (
           <div className="item" key={item.id}>
             <p>{item.title}</p>
-            <button onClick={() => addToPackedItems(item.id)}>Add</button>
-            <button onClick={() => removeFromPackedItems(item.id)}>Remove</button>
+ {props.type?<button onClick={() => props.updateFunction(item.id)}>Add</button>:
+            <button onClick={() => props.removeFunction(item.id)}>Remove</button>}
           </div>
         ))}
 

@@ -46,11 +46,7 @@ const get_packed_items = () => {
 
 const add_packed_item = (item) => {
   const packedItems = get_packed_items();
-  packedItems.push(item);
-};
-
-const update_packed_items = (packedItems) => {
-  db["packedItems"] = packedItems;
+  return packedItems.push(item);
 };
 
 module.exports = {
@@ -60,6 +56,5 @@ module.exports = {
   get_items,
   get_item_by_id,
   get_packed_items,
-  add_packed_item,
-  update_packed_items
+  add_packed_item
 };

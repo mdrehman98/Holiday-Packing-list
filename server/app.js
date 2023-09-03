@@ -6,6 +6,7 @@ const {
   get_trip,
   update_trip,
   get_packed_items,
+  add_packed_item,
 } = require("./db.js");
 const cors = require("cors");
 
@@ -77,9 +78,7 @@ app.post("/add-packed-item/:itemId", (req, res) => {
     res.json({ error: "Item not found" });
     return;
   }
-
-  const packedItems = get_packed_items();
-  packedItems.push(item);
+  add_packed_item(item)
 
   res.status(201);
   res.json({ message: "Item added to packedItems" });

@@ -1,14 +1,15 @@
-const getItems = async () => {
+export const getItems = async () => {
   const res = await fetch("http://localhost:3001/items");
   const items = await res.json();
   return items;
 };
 
 
-// api/items.js
-const API_URL = "http://localhost:3001"; // Change this to your server URL
+//Using the Export variable along with defining the Function
 
-const addToPackedItems = async (itemId) => {
+const API_URL = "http://localhost:3001"; // base URL
+
+export const addToPackedItems = async (itemId) => {
   try {
     const response = await fetch(`${API_URL}/add-packed-item/${itemId}`, {
       method: "POST",
@@ -24,7 +25,7 @@ const addToPackedItems = async (itemId) => {
   }
 };
 
-const removeFromPackedItems = async (itemId) => {
+export const removeFromPackedItems = async (itemId) => {
   try {
     const response = await fetch(`${API_URL}/remove-packed-item/${itemId}`, {
       method: "DELETE",
@@ -40,11 +41,4 @@ const removeFromPackedItems = async (itemId) => {
   }
 };
 
-export { getItems };
-export { addToPackedItems };
-export { removeFromPackedItems };
 
-//module.exports = {
-//  getItems,
-//  addToPackedItems
-//};
