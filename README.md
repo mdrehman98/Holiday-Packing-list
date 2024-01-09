@@ -1,4 +1,4 @@
-# MyPack - Technical Test
+# MyPack 
 
 ## Project Overview
 
