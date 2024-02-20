@@ -4,8 +4,6 @@
 
 MyPack is an intelligent packing application that allows users to create packing lists for their holidays.
 
-MyPack is the next big thing in SAAS for the holiday industry. Backed by over 2000 investors, it has quickly become the best selling service in the world with over 6 billion users.
-
 The backend server is built using NodeJS and Express. The frontend client is built using React.
 
 ## Setup
