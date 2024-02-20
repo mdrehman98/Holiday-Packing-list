@@ -6,12 +6,6 @@ MyPack is an intelligent packing application that allows users to create packing
 
 The backend server is built using NodeJS and Express. The frontend client is built using React.
 
-## Setup
-
-Please begin by downloading this repo. Then, create a private repo within your own GitHub account and push this repo to it.
-
-**Important: Please then provide access to your private repo to the user/s you were given in the technical test details email. We will use this access to view and grade your test, so please don't forget this step.**
-
 ### Installation
 
 You will require NodeJS and NPM to run this project. Please install these before continuing.
